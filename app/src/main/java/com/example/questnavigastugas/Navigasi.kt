@@ -27,24 +27,36 @@ fun DataApp(
             startDestination = Navigasi.Home.name,
 
             modifier = Modifier.padding(isiRuang)){
-            composable (route= Navigasi.Formulirku.name){
+            composable (Navigasi.Formulirku.name){
                 FormIsian(
                     OnSubmitBtnClick ={
                         navController.navigate(Navigasi.Detail.name)
                     }
                 )
             }
-            composable (route = Navigasi.Detail.name){
+            composable (Navigasi.Detail.name){
                 TampilData(
                     OnBackClick = {
                         cancelAndBackToFormulirku(navController)
                     },
                 )
             }
-
+            composable(Navigasi.Home.name){
+                Home(
+                    OnNavigateToPendaftaran = {
+                        navController.navigate(route = Navigasi.Formulirku.name)
+                    }
+                )
+            }
         }
     }
+}
 
+private fun cancelAndBackToFormulirku(
+    navController: NavHostController
+){
+    navController.popBackStack(Navigasi.Formulirku.name,
+        inclusive = false)
 }
 
 
