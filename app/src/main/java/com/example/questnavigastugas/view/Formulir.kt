@@ -34,11 +34,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@OptIn (ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    OnSubmitBtnClick: () -> Unit,
-    modifier: Modifier = Modifier){
+    onSubmitBtnClick: () -> Unit,
+    modifier: Modifier = Modifier) {
 
     var textNama by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
@@ -74,8 +74,7 @@ fun FormIsian(
             )
         },
         modifier = modifier.fillMaxSize()
-    ){
-        paddingValues ->
+    ) { paddingValues ->
         Card(
             modifier = Modifier
                 .padding(paddingValues)
@@ -103,6 +102,7 @@ fun FormIsian(
                     onValueChange = { textNama = it }
                 )
                 Spacer(modifier = Modifier.height(20.dp))
+
                 Text(text = "JENIS KELAMIN", fontWeight = FontWeight.SemiBold)
                 Column(modifier = Modifier.fillMaxWidth()) {
                     genderOptions.forEach { item ->
@@ -122,6 +122,7 @@ fun FormIsian(
                     }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
+
 
                 Text(text = "STATUS PERKAWINAN", fontWeight = FontWeight.SemiBold)
                 Column(modifier = Modifier.fillMaxWidth()) {
@@ -157,7 +158,7 @@ fun FormIsian(
                     modifier = Modifier.fillMaxWidth().height(45.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = OrangeSubmit),
                     enabled = textNama.isNotEmpty() && selectedJK.isNotEmpty() && selectedStatusKawin.isNotEmpty() && textAlamat.isNotEmpty(),
-                    onClick = OnSubmitBtnClick
+                    onClick = onSubmitBtnClick
                 ) {
                     Text("Submit")
                 }
