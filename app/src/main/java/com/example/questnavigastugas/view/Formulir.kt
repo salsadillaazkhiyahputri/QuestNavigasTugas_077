@@ -1,17 +1,21 @@
 package com.example.questnavigastugas.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -96,6 +100,25 @@ fun FormIsian(
                     label = { Text(text = "Isian nama lengkap") },
                     onValueChange = { textNama = it }
                 )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(text = "JENIS KELAMIN", fontWeight = FontWeight.SemiBold)
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    genderOptions.forEach { item ->
+                        Row(
+                            modifier = Modifier
+                                .selectable(
+                                    selected = selectedJK == item,
+                                    onClick = { selectedJK = item })
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(
+                                selected = selectedJK == item,
+                                onClick = { selectedJK = item })
+                            Text(item, style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
+                }
                 Spacer(modifier = Modifier.height(20.dp))
             }
         }
