@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -138,6 +140,26 @@ fun FormIsian(
                             Text(item, style = MaterialTheme.typography.bodyLarge)
                         }
                     }
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Text(text = "ALAMAT", fontWeight = FontWeight.SemiBold)
+                OutlinedTextField(
+                    value = textAlamat,
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text(text = "Alamat") },
+                    onValueChange = { textAlamat = it }
+                )
+                Spacer(modifier = Modifier.height(25.dp))
+
+                Button(
+                    modifier = Modifier.fillMaxWidth().height(45.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = OrangeSubmit),
+                    enabled = textNama.isNotEmpty() && selectedJK.isNotEmpty() && selectedStatusKawin.isNotEmpty() && textAlamat.isNotEmpty(),
+                    onClick = OnSubmitBtnClick
+                ) {
+                    Text("Submit")
                 }
                 Spacer(modifier = Modifier.height(20.dp))
             }
