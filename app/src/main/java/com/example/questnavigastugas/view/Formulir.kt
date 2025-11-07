@@ -81,6 +81,12 @@ fun FormIsian(
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.Start
             ) {
+                Text(
+                    text = "NAMA LENGKAP",
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
         }
     }
 
