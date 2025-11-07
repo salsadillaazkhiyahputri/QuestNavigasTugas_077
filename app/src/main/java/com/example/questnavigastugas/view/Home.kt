@@ -55,7 +55,7 @@ fun Home(onNavigateToPendaftaran: () -> Unit) {
                 painter = painterResource(id = R.drawable.senja),
                 contentDescription = "Logo Aplikasi",
                 modifier = Modifier
-                    .size(180.dp)
+                    .size(450.dp)
                     .padding(bottom = 24.dp)
             )
 
